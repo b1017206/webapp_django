@@ -13,6 +13,7 @@ class DBinfo(models.Model):
     url=models.URLField(verbose_name='なんかのURL',null=True)
 
     email=models.EmailField(max_length=50,null=True)
-
+    class Meta:
+        verbose_name_plural = 'データベース'
     def __str__(self):
         return self.title
