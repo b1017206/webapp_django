@@ -17,6 +17,10 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+#ページ遷移
+LOGIN_URL = '/login'
+LOGIN_REDIRECT_URL = '/dbinfo/top'#login後リダイレクトされる場所(http://127.0.0.1:8000/dbinfo/top/）
+LOGOUT_REDIRECT_URL='/login'
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -39,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
