@@ -49,6 +49,23 @@
         <a class="nav-link" href="{% url 'dbinfo:logout' %}">
         <i class="fa fa-fw fa-sign-out"></i>logout</a>
       </li>
+{% else %}
+
+<li class="nav-item d-none d-sm-inline-block">
+  <a class="nav-link"> ようこそ、ゲストさん</a>
+</li>
+
+
+<li>
+  <a class="nav-link" href="{% url 'dbinfo:login' %}">
+  <i class="fa fa-fw fa-sign-out"></i>login</a>
+</li>
+
+<li>
+  <a class="nav-link" href="{% url 'dbinfo:login' %}">
+  <i class="fa fa-fw fa-sign-out"></i>アカウント作成</a>
+</li>
+
 {% endif %}
 
     </ul>

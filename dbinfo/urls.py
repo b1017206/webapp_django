@@ -6,7 +6,9 @@ app_name ="dbinfo"
 
 urlpatterns = [
     #path('templates/', views.index_template, name='index_template'),
+    path('',views.top,name='top'),
     path('top/', views.top, name='top'),
     path('login/', views.Login.as_view(), name='login'),
     path('logout/', views.Logout.as_view(), name='logout'),
+    #↑について、name='login'とすることで、{% app_name:login %}と指定したときにviewsのlogin関数を呼び出してくれます
 ]

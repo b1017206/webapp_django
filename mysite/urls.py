@@ -18,6 +18,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('dbinfo/', include('dbinfo.urls')),
+    path('dbinfo/', include('dbinfo.urls')),#urlがhttp://127.0.0.1:8000/dbinfo/だった場合、dbinfo/urls.pyを参照する
     path('', include('dbinfo.urls')),
 ]
