@@ -16,7 +16,23 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 from django.views.generic import CreateView
-#from .forms import UserCreateForm
+from django.contrib.auth.forms import UserCreationForm
+from django.db import IntegrityError
+
+def signupuser(request):
+    if request.method=='GET':
+        return render(request, 'dbinfo/signupuser.html', {'form': UserCreationForm()})
+    else:
+        if request.POST['password1'] == request.POST['password2']:
+            try:
+                user = User.objects.create_user(request.POST['username'], password=request.POST['password1'])
+                user.save()
+                login(request, user)
+                return redirect('/login')
+            except IntegrityError:
+                return render(request, 'dbinfo/signupuser.html',{'form': UserCreationForm(), 'error': 'Try again.'})
+        else:#17
+            return render(request, 'dbinfo/signupuser.html', {'form': UserCreationForm(), 'error': 'Password did not match.'}) 
 
 
 class Login(LoginView):
