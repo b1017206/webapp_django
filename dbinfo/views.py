@@ -18,6 +18,7 @@ from django.contrib.auth import login, authenticate
 from django.views.generic import CreateView
 from django.contrib.auth.forms import UserCreationForm
 from django.db import IntegrityError
+from django.contrib.auth import logout
 
 def signupuser(request):
     if request.method=='GET':
@@ -32,7 +33,7 @@ def signupuser(request):
             except IntegrityError:
                 return render(request, 'dbinfo/signupuser.html',{'form': UserCreationForm(), 'error': 'Try again.'})
         else:#17
-            return render(request, 'dbinfo/signupuser.html', {'form': UserCreationForm(), 'error': 'Password did not match.'}) 
+            return render(request, 'dbinfo/signupuser.html', {'form': UserCreationForm(), 'error': 'Password did not match.'})
 
 
 class Login(LoginView):
@@ -41,9 +42,10 @@ class Login(LoginView):
     template_name = 'dbinfo/login.html'
 
 
-class Logout(LoginRequiredMixin, LogoutView):
+def Logout(request):
     """ログアウトページ"""
-    template_name = 'dbinfo/login.html'
+    logout(request)
+    return render(request,'dbinfo/logout.html')
 
 def top(request):
     return render(request, 'dbinfo/top.html')
