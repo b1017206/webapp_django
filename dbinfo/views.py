@@ -41,6 +41,11 @@ class Login(LoginView):
     form_class = LoginForm
     template_name = 'dbinfo/login.html'
 
+def sample(request):
+    return render(request,'dbinfo/sample.html')
+
+def top1(request):
+    return render(request,'dbinfo/top1.html')
 
 def Logout(request):
     """ログアウトページ"""
